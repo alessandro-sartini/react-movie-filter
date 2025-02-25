@@ -24,9 +24,54 @@ header,main{
   width: 100vw;
 }
 
+header .container{
+  margin-block: 1em;
+  align-items: center;
+}
 .container{
+  
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+  max-width: 80%;
+
+}
+/* input */
+
+.container-input{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+.container-input input{
+  width: 80%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;  
+}
+
+
+
+
+/* lista film */
+
+ul{
+  list-style-type:none;
+  padding: 0;
+}
+li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+span {
+  margin-left: 2rem;
+  color: #666;
 }
 
 
