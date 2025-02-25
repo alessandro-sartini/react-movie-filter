@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react"
 import startArrayFilms from "../data/arrayFilms"
 
+
+// components
+import SerchBar from "./main-components/SerchBar";
+import FilmList from "./main-components/FilmList";
 const Main = () => {
     
     const [arrayFilms, setArrayFilms] = useState(startArrayFilms);
@@ -17,54 +21,70 @@ const Main = () => {
     const filteredFilms = arrayFilms.filter((el) =>
         el.title.toUpperCase().includes(serchFilm.toUpperCase())
     );
+
+
     return (
 
 
-        <main >
+                <main >
 
-            <div className="container">
-                
-                <div className="container-input">
-                                        
-                    <input
-                        type="text"
-                        placeholder = "Cerca il film!"
-                        onChange={(e) => setSerchFilm(e.target.value)}
-                        value={serchFilm}
-                    />
-                               
-                </div>
-                <ul>
-
-                    {
-                        filteredFilms.map((el) => {
-
-                            return(
+                    <div className="container">
                         
-                                <li key={el.id}>
 
-                                    <h3>
-                                        {el.title}
-                                    </h3> 
-                                    <span>
-                                        {el.genre}
-                                    </span>
-                                </li>
-                            )
-                            
-                            
-                        })
-                    }
+                        <SerchBar
+                            serchFilm={serchFilm}
+                            setSerchFilm={setSerchFilm}
+                        />
 
-                </ul>
-            </div>
+                        <FilmList
+                            filteredFilms={filteredFilms}
+                        />
+
+                    </div>
 
 
-        </main>
+                </main>
 
-    )
+            )
 
 
 }
 
 export default Main;
+
+{/* <div className="container-input">
+                        
+    <input
+        type="text"
+        placeholder = "Cerca il film!"
+        onChange={(e) => setSerchFilm(e.target.value)}
+        value={serchFilm}
+    />
+               
+</div> */}
+
+
+
+{/* <ul>
+    
+    {
+        filteredFilms.map((el) => {
+            
+            return(
+                
+                <li key={el.id}>
+
+                    <h3>
+                        {el.title}
+                    </h3> 
+                    <span>
+                        {el.genre}
+                    </span>
+                </li>
+            )
+            
+            
+        })
+    }
+
+</ul> */}

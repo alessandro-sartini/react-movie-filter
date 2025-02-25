@@ -4,74 +4,80 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-color: #e0e0e0; /* Grigio chiaro per il testo */
+  --background-color: #1a1a2e; /* Blu scuro intenso per lo sfondo */
+  --accent-color: #0ea5e9; /* Blu vivace per accenti */
+  --secondary-color: #666; /* Grigio per dettagli secondari */
+  --input-bg: #2a2a40; /* Sfondo input leggermente più chiaro */
+  --border-color: #4b4b6b; /* Bordi delicati */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
 }
-
-
 
 body {
   margin: 0;
   display: flex;
 }
 
-header,main{
+header, main {
   width: 100vw;
 }
 
-header .container{
+header .container {
   margin-block: 1em;
   align-items: center;
 }
-.container{
-  
+
+.container {
   margin: 0 auto;
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-direction: column;
   max-width: 80%;
-
 }
-/* input */
 
-.container-input{
+/* Input */
+.container-input {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
-
-.container-input input{
+.container-input input {
   width: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #ccc;  
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
 }
 
 
+.container-input input:hover{
+  border: 3px solid var(--accent-color);
+}
 
-
-/* lista film */
-
-ul{
-  list-style-type:none;
+/* Lista film */
+ul {
+  list-style-type: none;
   padding: 0;
 }
-li{
+
+li {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 span {
   margin-left: 2rem;
-  color: #666;
+  color: var(--secondary-color);
 }
 
-
+h1 {
+  color: var(--accent-color); /* Blu per il titolo */
+}
