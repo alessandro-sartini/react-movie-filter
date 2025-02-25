@@ -1,4 +1,4 @@
-[
+const startArrayFilms = [
     { id: 1, title: 'Inception', genre: 'Fantascienza' },
     { id: 2, title: 'Il Padrino', genre: 'Thriller' },
     { id: 3, title: 'Titanic', genre: 'Romantico' },
@@ -15,3 +15,6 @@
     { id: 14, title: 'Gladiator', genre: 'Azione' },
     { id: 15, title: 'Amélie', genre: 'Romantico' }
 ]
+
+
+export default startArrayFilms
