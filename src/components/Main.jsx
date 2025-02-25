@@ -5,10 +5,18 @@ const Main = () => {
     
     const [arrayFilms, setArrayFilms] = useState(startArrayFilms);
 
-    // const [serchFilm, setSerchFilm] = useEffect('');
+    const [serchFilm, setSerchFilm] = useEffect('');
 
 
 
+    // ! ricerca + attivazione useEffect
+    useEffect(() => {
+        console.log("Array Films:", arrayFilms);
+    }), [arrayFilms];
+
+    const filteredFilms = arrayFilms.filter((el) =>
+        el.title.toUpperCase().includes(serchFilm.toUpperCase())
+    );
     return (
 
 
@@ -18,15 +26,15 @@ const Main = () => {
                 
                 <div className="container">
                     
-                    <form >
-                        <input
-                            type="text"
-                            placeholder = "Cerca il film!"
-                            onChange={(e) => setNewTask(e.target.value)}
-                            
-                        />
+                    
+                    <input
+                        type="text"
+                        placeholder = "Cerca il film!"
+                        onChange={(e) => setSerchFilm(e.target.value)}
+                        value={serchFilm}
+                    />
                         
-                    </form>
+                    
         
                 </div>
                 <ul>
@@ -39,10 +47,9 @@ const Main = () => {
                                 <li key={el.id}>
 
                                     <h3>
-                                    {el.title}
+                                        {el.title}
                                     </h3> 
                                     <span>
-
                                         {el.genre}
                                     </span>
                                 </li>
