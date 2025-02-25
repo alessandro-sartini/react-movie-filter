@@ -1,32 +1,32 @@
-export default function FilmList({filteredFilms}) {
+export default function FilmList({filteredFilmsByGender}) {
     
     return (
         
 
         <ul>
             
-            {
-                filteredFilms.map((el) => {
+        {
+            filteredFilmsByGender.map((el) => {
+                
+                return(
                     
-                    return(
-                        
-                        <li key={el.id}>
+                    <li key={el.id}>
 
-                            <h3>
-                                {el.title}
-                            </h3> 
-                            <span>
-                                {el.genre}
-                            </span>
-                        </li>
-                    )
-                    
-                    
-                })
-            }
+                        <h3>
+                            {el.title}
+                        </h3> 
+                        <span>
+                            {el.genre}
+                        </span>
 
-        </ul>
+                    </li>
+                )
+                
+                
+            })
+        }
 
+    </ul>
     )
 
 

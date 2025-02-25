@@ -2,13 +2,19 @@ import { useState, useEffect } from "react"
 import startArrayFilms from "../data/arrayFilms"
 
 
-// components
+//! components
 import SerchBar from "./main-components/SerchBar";
 import FilmList from "./main-components/FilmList";
+import SelectedGenr from "./main-components/Selectgenr";
+
 const Main = () => {
     
     const [arrayFilms, setArrayFilms] = useState(startArrayFilms);
 
+
+    const [genreFilm, setGenreFilm] = useState("");
+    
+    
     const [serchFilm, setSerchFilm] = useState('');
 
 
@@ -18,10 +24,14 @@ const Main = () => {
         console.log("Array Films:", arrayFilms);
     }, [arrayFilms]);
 
-    const filteredFilms = arrayFilms.filter((el) =>
-        el.title.toUpperCase().includes(serchFilm.toUpperCase())
-    );
 
+    const filteredFilmsByGender = arrayFilms.filter((el) => {
+       
+        return (genreFilm === "" || el.genre === genreFilm)
+            &&
+        el.title.toUpperCase().includes(serchFilm.toUpperCase())
+
+    });
 
     return (
 
@@ -29,19 +39,19 @@ const Main = () => {
                 <main >
 
                     <div className="container">
-                        
 
                         <SerchBar
                             serchFilm={serchFilm}
                             setSerchFilm={setSerchFilm}
                         />
+                        
 
-                        <FilmList
-                            filteredFilms={filteredFilms}
-                        />
+                        <SelectedGenr genreFilm={genreFilm} setGenreFilm={setGenreFilm} arrayFilms={arrayFilms} />
 
+                        <FilmList filteredFilmsByGender={ filteredFilmsByGender} />
+
+                     
                     </div>
-
 
                 </main>
 
@@ -53,38 +63,88 @@ const Main = () => {
 export default Main;
 
 {/* <div className="container-input">
-                        
-    <input
-        type="text"
-        placeholder = "Cerca il film!"
-        onChange={(e) => setSerchFilm(e.target.value)}
-        value={serchFilm}
-    />
-               
-</div> */}
-
-
-
-{/* <ul>
     
-    {
-        filteredFilms.map((el) => {
-            
+    <input
+    type="text"
+    placeholder = "Cerca il film!"
+    onChange={(e) => setSerchFilm(e.target.value)}
+    value={serchFilm}
+    />
+    
+    </div> */}
+    
+    
+    
+    {/* <ul>
+        
+        {
+            filteredFilms.map((el) => {
+                    
             return(
                 
-                <li key={el.id}>
-
-                    <h3>
-                        {el.title}
+            <li key={el.id}>
+            
+            <h3>
+            {el.title}
                     </h3> 
                     <span>
-                        {el.genre}
+                    {el.genre}
                     </span>
-                </li>
+                    </li>
             )
             
             
         })
     }
-
-</ul> */}
+    
+    </ul> */}
+    {/* <div>
+        <select
+            value={genreFilm}
+            onChange={(e) => setGenreFilm(e.target.value)}
+        >
+            <option value="">Tutti i film</option>
+            {arrayFilms.map((e) => {
+    
+    
+                    return (
+                        
+                        <option
+                            key={e.id}
+                            value={e.genre}>
+                            {e.genre}
+                        </option>
+    
+    
+                    )
+                })
+            
+            
+            }
+    
+        </select>
+    </div> */}
+    {/* <ul>
+    
+        {
+            filteredFilmsByGender.map((el) => {
+                
+                return(
+                    
+                <li key={el.id}>
+                
+                        <h3>
+                            {el.title}
+                        </h3> 
+                        <span>
+                        {el.genre}
+                        </span>
+    
+                    </li>
+                )
+                
+                
+            })
+        }
+    
+    </ul> */}
